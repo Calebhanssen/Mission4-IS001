@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Hanssen Golfing";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <!-- Add a custom icon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .display-4 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-4">Golf Lesson Calculator</h1>
+        </div>
+
+        <div>
+            <label for="hours">Enter number of hours needed:</label>
+            <input type="number" id="hours" name="hours" min="1">
+            <label>Hourly rate:</label>
+            <input type="text" id="hourlyRate" value="$50" readonly>
+            <button onclick="calculateTotal()">Calculate Total</button>
+            <label for="total">Total:</label>
+            <input type="text" id="total" readonly>
+            <br>
+            <a href="/">Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function calculateTotal() {
+            var hours = parseInt($("#hours").val());
+            if (isNaN(hours) || hours <= 0) {
+                alert("Please enter a valid positive number for hours.");
+                return;
+            }
+            var hourlyRate = 50; // Replace with your actual hourly rate
+            var total = hours * hourlyRate;
+            $("#total").val("$" + total);
+        }
+    </script>
+
+</body>
+</html>
+
